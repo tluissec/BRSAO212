@@ -1,0 +1,18 @@
+'''2 - Criar um código que registre as notas de alunos e calcular a média da turma.'''
+
+# Cálculo da média da turma
+notas = []
+alunos = int(input("Digite o número de alunos na turma: "))
+for i in range(alunos): # Loop para registrar as notas de cada aluno5
+    while True:
+        try:       
+            nota = float(input(f"Digite a nota do aluno {i + 1}: "))
+            notas.append(nota)
+            break  # Sai do loop se a nota for válida
+        except ValueError:
+            print("Entrada inválida. Por favor, insira um número válido.")
+if notas:
+    media = sum(notas) / len(notas)
+    print(f"A média da turma é: {media:.2f}")       
+else:
+    print("Nenhuma nota foi registrada.")
