@@ -1,0 +1,20 @@
+'''4 - Crie um programa que calcule a quantos dias um individuo está vivo de acordo com a data do dia.'''
+
+# Função para calcular o número de dias vividos
+from datetime import date
+
+def calcular_dias_vivo(dia_nascimento: int, mes_nascimento: int, ano_nascimento: int) -> int:
+    data_nascimento = date(ano_nascimento, mes_nascimento, dia_nascimento)
+    data_atual = date.today() # pega automaticamente a data atual
+    dias_vivo = (data_atual - data_nascimento).days
+    return dias_vivo
+
+# Testando a função
+try:
+    dia_nascimento = int(input("Digite o dia de nascimento (DD): "))   
+    mes_nascimento = int(input("Digite o mês de nascimento (MM): "))
+    ano_nascimento = int(input("Digite o ano de nascimento (AAAA): "))
+    dias_vivo = calcular_dias_vivo(dia_nascimento, mes_nascimento, ano_nascimento)
+    print(f"\nVocê está vivo há {dias_vivo} dias.")
+except ValueError:
+    print("Data inválida. Por favor, insira valores numéricos corretos para dia, mês e ano.")
