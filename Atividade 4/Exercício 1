@@ -1,0 +1,31 @@
+'''1 - Criar um código que faça uma calculadora que tenha as operações básicas(+,-,*,/).'''
+
+# Calculadora
+while True: # Loop infinito para permitir múltiplas operações
+    try:    # Tratamento de exceções para entradas inválidas
+        num1 = float(input("Digite o primeiro número: "))
+        operador = input("Digite o operador (+, -, *, /) ou 'sair' para encerrar: ")
+        if operador.lower() == 'sair':
+            print("Encerrando a calculadora.")
+            break
+        num2 = float(input("Digite o segundo número: "))
+
+        if operador == '+':
+            resultado = num1 + num2
+        elif operador == '-':
+            resultado = num1 - num2
+        elif operador == '*':
+            resultado = num1 * num2
+        elif operador == '/':
+            if num2 == 0:
+                print("Erro: Divisão por zero não é permitida.")
+                continue # Volta ao início do loop
+            resultado = num1 / num2
+        else:
+            print("Operador inválido. Tente novamente.")
+            continue # Volta ao início do loop
+
+        print(f"O resultado de {num1} {operador} {num2} é: {resultado}")
+
+    except ValueError: # Captura erros de conversão de tipo
+        print("Entrada inválida. Por favor, insira números válidos.")
