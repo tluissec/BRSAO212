@@ -1,0 +1,5 @@
+'''1- Programa de Saudação
+* Crie um programa que imprima a mensagem "Olá, mundo!" na tela.'''
+
+# Programa de Saudação
+print("Olá, mundo!") # Exibe a mensagem de saudação na tela
