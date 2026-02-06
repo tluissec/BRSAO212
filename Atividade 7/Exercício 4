@@ -1,0 +1,40 @@
+import json
+
+def manipular_json():
+    nome_arquivo = 'perfil.json'
+    dados_pessoa = {
+        "nome": "Julia",
+        "idade": 29,
+        "cidade": "Belo Horizonte",
+        "interesses": ["Python", "Cloud", "Segurança"]
+    }
+
+    try:
+        # 'w' = write (escrever). ensure_ascii=False permite acentos.
+        with open(nome_arquivo, 'w', encoding='utf-8') as arquivo:
+            json.dump(dados_pessoa, arquivo, indent=4, ensure_ascii=False)
+        print(f"Sucesso: Dados gravados em '{nome_arquivo}'.")
+        
+    except Exception as e:
+        print(f"Falha crítica ao salvar: {e}")
+        return  # Se falhou ao salvar, encerra o programa aqui.
+    try:
+        # 'r' = read (ler)
+        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+            dados_lidos = json.load(arquivo)
+        
+        print
+        # Exibe formatado na tela
+        print(json.dumps(dados_lidos, indent=4, ensure_ascii=False))
+        
+        # Acessando um campo específico
+        print(f"\nCidade recuperada: {dados_lidos['cidade']}")
+
+    except FileNotFoundError:
+        print(f"Erro: O arquivo '{nome_arquivo}' desapareceu.")
+    except json.JSONDecodeError:
+        print("Erro: O arquivo existe, mas o formato JSON está corrompido.")
+
+# Executa
+if __name__ == "__main__":
+    manipular_json()
