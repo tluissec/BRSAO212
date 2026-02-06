@@ -1,0 +1,11 @@
+'''2-  Crie uma função que verifique se uma palavra ou frase é um palíndromo (lê-se igual de trás para frente, ignorando espaços e pontuação). Se o resultado é True, responda “Sim”, se o resultado for False, responda “Não”.''' 
+
+# Função para verificar se uma palavra ou frase é um palíndromo
+def verificar_palindromo(texto: str) -> bool:
+    texto_limpo = ''.join(char.lower() for char in texto if char.isalnum()) # Remove espaços e pontuação, e converte para minúsculas
+    return texto_limpo == texto_limpo[::-1] # Verifica se o texto limpo é igual ao seu reverso
+
+# Testando a função
+entrada = input("Digite uma palavra ou frase: ")   
+resultado = verificar_palindromo(entrada)
+print(f" Resultado: {'Sim' if resultado else 'Não'} é palíndromo.") # Exibe "Sim" se for palíndromo, caso contrário "Não"
