@@ -6,7 +6,6 @@
 * Altura: 20 cm
 O programa deve calcular o volume e exibir o resultado em cm³.'''
 
-# Calculadora de Volume
 comprimento = 12  # em cm
 largura = 14      # em cm
 altura = 20       # em cm
