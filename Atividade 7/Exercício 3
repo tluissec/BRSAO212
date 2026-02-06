@@ -1,0 +1,27 @@
+def ler_arquivo_linha_por_linha():
+    # Solicita o caminho/nome do arquivo ao usuário
+    nome_arquivo = input("Digite o nome do arquivo para ler (ex: notas.txt): ").strip()
+
+    try:
+        # 'r' significa 'read' (leitura)
+        # encoding='utf-8' garante que acentos apareçam corretamente
+        with open(nome_arquivo, 'r', encoding='utf-8') as arquivo:
+            
+            print(f"\n--- Conteúdo de '{nome_arquivo}' ---\n")
+            
+            # Itera diretamente sobre o objeto arquivo (é mais eficiente de memória)
+            for linha in arquivo:
+                # .rstrip() remove a quebra de linha duplicada
+                print(linha.rstrip())
+                
+            print("\n--- Fim do arquivo ---")
+
+    except FileNotFoundError:
+        print(f"Erro Crítico: O arquivo '{nome_arquivo}' não existe no diretório.")
+    except PermissionError:
+        print(f"Erro: Você não tem permissão para ler '{nome_arquivo}'.")
+    except Exception as e:
+        print(f"Ocorreu um erro desconhecido: {e}")
+
+# Executa
+ler_arquivo_linha_por_linha()
