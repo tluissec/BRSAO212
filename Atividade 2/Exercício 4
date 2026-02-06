@@ -1,0 +1,14 @@
+'''4- Calculadora de Consumo de Combustível
+Desenvolva um programa que calcula o consumo médio de combustível de um veículo. Use os seguintes dados:
+
+* Distância percorrida: 300 km
+* Combustível gasto: 25 litros
+O programa deve calcular o consumo médio (km/l) e exibir todos os dados da viagem, incluindo o resultado final arredondado para duas casas decimais.'''
+
+# Calculadora de Consumo de Combustível
+distancia_percorrida = 300  # em km
+combustivel_gasto = 25      # em litros
+consumo_medio = distancia_percorrida / combustivel_gasto
+print(f"Distância percorrida: {distancia_percorrida} km") # Exibe a distância percorrida
+print(f"Combustível gasto: {combustivel_gasto} litros")   # Exibe o combustível gasto
+print(f"Consumo médio: {consumo_medio:.2f} km/l") # Exibe o consumo médio formatado com duas casas decimais
