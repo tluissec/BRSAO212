@@ -1,0 +1,12 @@
+'''3 - Criar um código que serve para verificar se uma senha digitada pelo usuário atende a critérios básicos de segurança.
+a - deve ter pelo menos 8 caracteres.
+b - deve conter pelo menos um número.'''
+
+# Verificação de senha
+senha = input("Digite a senha para verificação: ")
+def verificar_senha(senha): # Função para verificar os critérios da senha
+    if len(senha) < 8: # Verifica o comprimento da senha
+        return "Senha inválida: deve ter pelo menos 8 caracteres."
+    if not any(char.isdigit() for char in senha): # Verifica se há pelo menos um dígito
+        return "Senha inválida: deve conter pelo menos um número."
+    return "Senha válida."
