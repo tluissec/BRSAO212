@@ -1,0 +1,44 @@
+import csv
+
+def criar_arquivo_pessoas():
+    # 1. Dados para salvar (Lista de dicionários é mais legível)
+    dados = [
+        {"Nome": "Ana", "Idade": 25, "Cidade": "São Paulo"},
+        {"Nome": "Carlos", "Idade": 30, "Cidade": "Rio de Janeiro"},
+        {"Nome": "Beatriz", "Idade": 22, "Cidade": "Curitiba"},
+        {"Nome": "João", "Idade": 28, "Cidade": "Salvador"}
+    ]
+
+    # 2. Usuário escolhe o nome do arquivo
+    nome_arquivo = input("Digite o nome do arquivo para salvar (ex: pessoas.csv): ").strip()
+    
+    # Garante que o arquivo tenha a extensão .csv
+    if not nome_arquivo.endswith('.csv'):
+        nome_arquivo += '.csv'
+
+    try:
+        # 3. Abre o arquivo em modo de escrita ('w')
+        # newline='' evita linhas em branco extras no Windows
+        with open(nome_arquivo, mode='w', newline='', encoding='utf-8') as arquivo:
+            
+            # Define as colunas (cabeçalho)
+            campos = ["Nome", "Idade", "Cidade"]
+            escritor = csv.DictWriter(arquivo, fieldnames=campos)
+            
+            # Escreve o cabeçalho
+            escritor.writeheader()
+            
+            # Escreve as linhas de dados
+            escritor.writerows(dados)
+            
+        print(f"Sucesso! Arquivo '{nome_arquivo}' criado corretamente.")
+
+    except PermissionError:
+        print(f"Falha: Sem permissão para escrever em '{nome_arquivo}'. O arquivo pode estar aberto?")
+    except IOError as e:
+        print(f"Falha de Entrada/Saída: {e}")
+    except Exception as e:
+        print(f"Erro inesperado ao salvar: {e}")
+
+# Executa o programa
+criar_arquivo_pessoas()
