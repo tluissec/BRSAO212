@@ -1,0 +1,24 @@
+'''4 - Crie um programa que realize consultas a  em relação ao Real (BRL) usando a API mostre valor atual, máxima, mínima e data/hora da última atualização, caso a moeda não existir ou houver erro na requisição, retorne uma mensagem de erro.'''
+
+#Consultando a API ExchangeRate-API
+import requests
+from datetime import datetime
+
+def consulta_moeda(moeda: str) -> dict:
+    url = f"https://economia.awesomeapi.com.br/json/last/BRL-{moeda}"
+    resposta = requests.get(url, timeout=5)
+    resposta.raise_for_status()
+    return resposta.json()
+
+try:
+    moeda = input("Digite o código da moeda (ex: USD, EUR, JPY): ").upper()
+    dados_moeda = consulta_moeda(moeda)
+    chave = f"BRL{moeda}"
+    cotacao = dados_moeda[chave]
+    data_hora = datetime.fromtimestamp(int(cotacao['timestamp']))
+    print(f"Valor atual de 1 BRL em {moeda}: {float(cotacao['bid']):.2f}")
+    print(f"Valor máximo: {float(cotacao['high']):.2f}")
+    print(f"Valor mínimo: {float(cotacao['low']):.2f}")
+    print(f"Data/Hora da última atualização: {data_hora.strftime('%Y-%m-%d %H:%M:%S')}")
+except requests.exceptions.RequestException:
+    print("Erro na requisição. Tente novamente mais tarde.")
