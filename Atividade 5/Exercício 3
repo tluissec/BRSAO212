@@ -1,0 +1,18 @@
+'''3 - Crie um programa que serve para calcular o preço final de um produto após aplicar um desconto percentual.
+a - Cálculo de desconto: Calcula o valor do desconto baseado em uma porcentagem.
+b - Preço final: Determina o novo preço após o desconto.
+c - Formatação: Arredonda o resultado para 2 casas decimais (centavos).
+d - Interação com usuário: Pede os valores necessários e mostra o resultado formatado.'''
+
+# Função para calcular o preço final após aplicar um desconto percentual
+def calcular_preco_final(preco_original: float, percentual_desconto: float) -> tuple[float, float]:
+    valor_desconto = (percentual_desconto / 100) * preco_original  
+    preco_final = preco_original - valor_desconto  
+    return round(valor_desconto, 2), round(preco_final, 2)
+
+# Testando a função
+preco_original = float(input("Digite o preço original do produto: R$ "))
+percentual_desconto = float(input("Digite o percentual de desconto (%): "))
+valor_desconto, preco_final = calcular_preco_final(preco_original, percentual_desconto)
+print(f"\nValor do desconto é R$ {valor_desconto:.2f}")
+print(f"Preço final com desconto é R$ {preco_final:.2f}")
