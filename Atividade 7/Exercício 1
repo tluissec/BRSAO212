@@ -1,0 +1,28 @@
+import pandas as pd
+
+def processar_csv(caminho_arquivo):
+    try:
+        # Tenta ler o arquivo CSV
+        df = pd.read_csv(caminho_arquivo)
+        
+        # Verifica se a coluna existe
+        if 'tempo_execucao' not in df.columns:
+            print("Erro: A coluna 'tempo_execucao' não existe no arquivo.")
+            return
+
+        # Realiza os cálculos
+        media = df['tempo_execucao'].mean()
+        maximo = df['tempo_execucao'].max()
+
+        print(f"Média do tempo de execução: {media:.2f}")
+        print(f"Maior tempo de execução: {maximo:.2f}")
+
+    except FileNotFoundError:
+        print(f"Erro: O arquivo '{caminho_arquivo}' não foi encontrado.")
+    except pd.errors.EmptyDataError:
+        print("Erro: O arquivo está vazio.")
+    except Exception as e:
+        print(f"Ocorreu um erro inesperado: {e}")
+
+# Exemplo de uso (crie um arquivo 'dados.csv' para testar)
+processar_csv('dados.csv')
